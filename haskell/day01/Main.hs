@@ -79,8 +79,20 @@ count2 (Left step) = do
         then return $ (step - current) `div` 100 + 1
         else return 0
 
+count2' :: Step -> Dial
+count2' step = do
+    current <- get
+    let
+        delta = step2int step
+        next = current + delta
+        cross = if delta >= 0
+                then next `div` 100 - current `div` 100
+                else (current - 1) `div` 100 - (next - 1) `div` 100
+    put next
+    return cross
+
 answer2 :: [Step] -> Int
-answer2 input = sum $ evalState (mapM stepping input) initial
+answer2 input = sum $ evalState (mapM count2' input) initial
 
 stepping :: Step -> Dial
 stepping step = do
