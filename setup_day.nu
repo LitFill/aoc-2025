@@ -46,34 +46,33 @@ def main [] {
     # Haskell template
     let hs_template = 'module Main where
 
-main :: IO ()
-main = do
-  -- Read input file
-  input <- readFile "input.txt"
+import Text.Printf (printf)
 
-  -- Part 1
-  putStrLn $ "Part 1: " ++ solvePart1 input
-
-  -- Part 2
-  putStrLn $ "Part 2: " ++ solvePart2 input
+testFile, inputFile :: FilePath
+testFile  = "./' ++ $day_name ++ '/test.txt"
+inputFile = "./' ++ $day_name ++ '/input.txt"
 
 solvePart1 :: String -> String
 solvePart1 input = "Not implemented yet"
 
 solvePart2 :: String -> String
 solvePart2 input = "Not implemented yet"
+
+main :: IO ()
+main = do
+  input <- readFile inputFile
+
+  putStrLn $ "Part 1: " ++ solvePart1 input
+
+  putStrLn $ "Part 2: " ++ solvePart2 input
 '
     $hs_template | save $"haskell/($day_name)/Main.hs"
 
     # Rust template
     let rs_template = 'use std::fs;
 
-fn main() {
-    let input = fs::read_to_string("input.txt").expect("Should have been able to read the file");
-
-    println!("Part 1: {}", solve_part1(&input));
-    println!("Part 2: {}", solve_part2(&input));
-}
+const INPUT_FILE: &str = "src/' ++ $day_name ++ '/input.txt";
+const TEST_FILE:  &str = "src/' ++ $day_name ++ '/test.txt";
 
 fn solve_part1(input: &str) -> String {
     "Not implemented yet".to_string()
@@ -81,6 +80,13 @@ fn solve_part1(input: &str) -> String {
 
 fn solve_part2(input: &str) -> String {
     "Not implemented yet".to_string()
+}
+
+fn main() {
+    let input = fs::read_to_string(INPUT_FILE).expect("Should have been able to read the file");
+
+    println!("Part 1: {}", solve_part1(&input));
+    println!("Part 2: {}", solve_part2(&input));
 }
 '
     $rs_template | save $"rust/src/($day_name)/main.rs"
