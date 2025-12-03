@@ -1,0 +1,23 @@
+# Ignore build artifacts for Haskell
+/haskell/dist-newstyle/
+
+# Ignore build artifacts for Rust
+/rust/target/
+
+# Common build and editor artifacts
+*.o
+*.hi
+*.a
+*~
+*.swp
+#*
+.DS_Store
+.vscode/
+
+# Ignore puzzle input files as they are specific to each user
+# However, they are currently part of the structure, so commented out for now.
+# input.txt
+# test.txt
+
+# Directory for storing generated results, if any
+/results/
