@@ -35,8 +35,10 @@ answer2 deltas = sum crossings
       where
         next = current + delta
         cross
-            | delta >= 0 = next `div` dialCount - current `div` dialCount
-            | otherwise  = (current - 1) `div` dialCount - (next - 1) `div` dialCount
+            | delta >= 0 =
+                next `div` dialCount - current `div` dialCount
+            | otherwise  =
+                (current - 1) `div` dialCount - (next - 1) `div` dialCount
 
 initial :: Int
 initial = 50
