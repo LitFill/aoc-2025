@@ -67,5 +67,4 @@ main = do
         Answer 2 = %d
         ====================
         """
-        answer01
-        answer02
+        answer01 answer02
