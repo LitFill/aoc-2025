@@ -44,27 +44,43 @@ def main [] {
     # 4. Create template source files
     print "Creating source file templates..."
     # Haskell template
-    let hs_template = 'module Main where
+    let hs_template = '{-# LANGUAGE MultilineStrings #-}
 
-import Text.Printf (printf)
+module Main where
+
+import Control.Monad (when)
+import Text.Printf   (printf)
 
 testFile, inputFile :: FilePath
-testFile  = "./' ++ $day_name ++ '/test.txt"
+testFile  = "./' ++ $day_name ++ 'test.txt"
 inputFile = "./' ++ $day_name ++ '/input.txt"
 
-solvePart1 :: String -> String
-solvePart1 input = "Not implemented yet"
+solvePart1 :: String -> Int
+solvePart1 _input = error "Not implemented yet"
 
-solvePart2 :: String -> String
-solvePart2 input = "Not implemented yet"
+solvePart2 :: String -> Int
+solvePart2 _input = error "Not implemented yet"
 
 main :: IO ()
 main = do
-  input <- readFile inputFile
+    tests <- readFile testFile
+    when (solvePart1 tests /= undefined) do
+        error "wrong algorithm in answer 1"
+    when (solvePart2 tests /= undefined) do
+        error "wrong algorithm in answer 2"
 
-  putStrLn $ "Part 1: " ++ solvePart1 input
+    inputs <- readFile inputFile
+    let answer01 = solvePart1 inputs
+    let answer02 = solvePart2 inputs
 
-  putStrLn $ "Part 2: " ++ solvePart2 input
+    printf """
+        ====================
+        DAY 01
+        Answer 1 = %d
+        Answer 2 = %d
+        ====================
+        """
+        answer01 answer02
 '
     $hs_template | save $"haskell/($day_name)/Main.hs"
 
