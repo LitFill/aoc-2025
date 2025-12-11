@@ -31,3 +31,18 @@ executable day02
     hs-source-dirs:   day02
     default-language: GHC2024
 
+
+
+executable day03
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base ^>=4.21.0.0, mtl
+    hs-source-dirs:   day03
+    default-language: GHC2024
+
+executable day04
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base ^>=4.21.0.0, mtl
+    hs-source-dirs:   day04
+    default-language: GHC2024

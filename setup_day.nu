@@ -45,6 +45,7 @@ def main [] {
     print "Creating source file templates..."
     # Haskell template
     let hs_template = '{-# LANGUAGE MultilineStrings #-}
+{-# LANGUAGE BlockArguments #-}
 
 module Main where
 
@@ -52,7 +53,7 @@ import Control.Monad (when)
 import Text.Printf   (printf)
 
 testFile, inputFile :: FilePath
-testFile  = "./' ++ $day_name ++ 'test.txt"
+testFile  = "./' ++ $day_name ++ '/test.txt"
 inputFile = "./' ++ $day_name ++ '/input.txt"
 
 solvePart1 :: String -> Int
@@ -75,7 +76,7 @@ main = do
 
     printf """
         ====================
-        DAY 01
+        DAY ' ++ $day_name ++ '
         Answer 1 = %d
         Answer 2 = %d
         ====================
