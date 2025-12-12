@@ -1,5 +1,6 @@
 # Ignore build artifacts for Haskell
 /haskell/dist-newstyle/
+/haskell/bin/
 
 # Ignore build artifacts for Rust
 /rust/target/
