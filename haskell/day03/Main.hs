@@ -26,8 +26,7 @@ biggestNDigitNumber n cs = read res
         window = take (slack + 1) xs
         maxDgt = maximum window
         suffix =
-            xs &break (== maxDgt)
-               &snd
+            xs &dropWhile (/= maxDgt)
                &drop 1
 
 biggest2DigitNumber :: [Char] -> Int
@@ -74,5 +73,6 @@ main = do
         Answer 1 = %d
         Answer 2 = %d
         ====================
+
         """
         answer01 answer02

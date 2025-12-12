@@ -3,16 +3,16 @@
 def main [] {
     # 1. Determine the next day number
     # We filter for directories that look like digits
-    let latest_day_str = (ls | where type == dir and name =~ '^\d{2}$' | get name | sort | last)
+    let latest_day_str: string = (ls | where type == dir and name =~ '^\d{2}$' | get name | sort | last)
 
-    let next_day_num = if ($latest_day_str | is-empty) {
+    let next_day_num: int = if ($latest_day_str | is-empty) {
         1
     } else {
         ($latest_day_str | into int) + 1
     }
 
     # FIX: Use 'fill' to zero-pad the number
-    let day_num_str = ($next_day_num | into string | fill -a r -c '0' -w 2)
+    let day_num_str: string = ($next_day_num | into string | fill -a r -c '0' -w 2)
     # CLEANUP: Use string interpolation $"..."
     let day_name = $"day($day_num_str)"
 
@@ -76,7 +76,7 @@ main = do
 
     printf """
         ====================
-        DAY ' ++ $day_name ++ '
+        DAY ' ++ $day_num_str ++ '
         Answer 1 = %d
         Answer 2 = %d
         ====================

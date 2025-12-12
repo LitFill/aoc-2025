@@ -4,8 +4,8 @@
 module Main where
 
 import Control.Monad (when)
-import Text.Printf (printf)
-import Data.List (scanl', mapAccumL)
+import Text.Printf   (printf)
+import Data.List     (scanl', mapAccumL)
 
 testFile, inputFile :: FilePath
 testFile  = "./day01/test.txt"
@@ -66,5 +66,6 @@ main = do
         Answer 1 = %d
         Answer 2 = %d
         ====================
+
         """
         answer01 answer02
